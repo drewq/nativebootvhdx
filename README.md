@@ -60,7 +60,7 @@ _(optional)_ backup the vhdx if you have the time and storage space available
 Launch either **command prompt as admin** or **powershell as admin**
 
 ### CMD: 
-Copy our current boot entry
+Copy the current boot entry
 > bcdedit /copy {current} /d "My Dualboot Description"
 
 Copy the UUID including the brackets {...} from the **output** of the previous command
