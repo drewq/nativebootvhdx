@@ -86,7 +86,7 @@ Change the **osdevice** path of the new boot entry to the vhdx
 
 # Step 5 - Reboot and Setup Drivers
 
-Since the machine has been **sysprepped** in **Step 2** it will need to go through mini setup to prepare Windows causing the computer to **reboot** a couple of times
+Since the machine has been **sysprepped** in **Step 2** it will need to **reboot** a couple of times in order to prepare Windows
 
 Windows will go through the **user** and **region** setup question again unless an answerfile was provided
 
