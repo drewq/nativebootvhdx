@@ -26,7 +26,7 @@ _(optional)_ Select your network adapter settings
 Create a **virtual hard disk**, specify desired:
 * Virtual hard disk name _[.vhdx format is required]_
 * Location
-* Size
+* Size _[must have this much storage space available to boot native boot vhdx]_
 
 Select **install an operating system from a bootable image file**
 
@@ -66,11 +66,14 @@ Copy the current boot entry
 Copy the UUID including the brackets {...} from the **output** of the previous command
 
 Change the **device** path of the new boot entry to the vhdx
-> bcedit /set {UUID from clipboard} device vhd="FullPathToVHDXFromStep3.vhdx"
+> bcedit /set {UUID from clipboard} device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"
+
+> _bcdedit /set {...} device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"_
 
 Change the **osdevice** path of the new boot entry to the vhdx
-> bcedit /set {UUID from clipboard} osdevice vhd="FullPathToVHDXFromStep3.vhdx"
+> bcedit /set {UUID from clipboard} osdevice vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"
 
+> _bcdedit /set {...} osdevice vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"_
 
 ### PS:
 Copy the **current** boot entry 
@@ -79,11 +82,14 @@ Copy the **current** boot entry
 Copy the UUID including the brackets {...} from the **output** of the previous command
 
 Change the **device** path of the new boot entry to the vhdx
-> Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" device vhd="FullPathToVHDXFromStep3.vhdx"'
+> Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"'
+
+> _Invoke-Expression 'bcdedit /set "{...}" device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"'_
 
 Change the **osdevice** path of the new boot entry to the vhdx
-> Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" osdevice vhd="FullPathToVHDXFromStep3.vhdx"'
+> Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" osdevice vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"'
 
+> _Invoke-Expression 'bcdedit /set "{...}" osdevice vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"'_
 # Step 5 - Reboot and Setup Drivers
 
 Since the machine has been **sysprepped** in **Step 2** it will need to **reboot** a couple of times in order to prepare Windows
