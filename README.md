@@ -60,33 +60,39 @@ _(optional)_ backup the vhdx if you have the time and storage space available
 Launch either **command prompt as admin** or **powershell as admin**
 
 ### CMD: 
-Copy the current boot entry
+Copy the current boot entry:
+
 `bcdedit /copy {current} /d "My Dualboot Description"`
 
 Copy the UUID including the brackets {...} from the **output** of the previous command
 
-Change the **device** path of the new boot entry to the vhdx
+Change the **device** path of the new boot entry to the vhdx:
+
 `bcedit /set {UUID from clipboard} device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"`
 
 > _bcdedit /set {...} device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"_
 
-Change the **osdevice** path of the new boot entry to the vhdx
+Change the **osdevice** path of the new boot entry to the vhdx:
+
 `bcedit /set {UUID from clipboard} osdevice vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"`
 
 > _bcdedit /set {...} osdevice vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"_
 
 ### PS:
-Copy the **current** boot entry 
+Copy the **current** boot entry:
+
 `invoke-expression 'bcdedit.exe /copy "{current}" /d "My Dualboot Description"'`
 
 Copy the UUID including the brackets {...} from the **output** of the previous command
 
-Change the **device** path of the new boot entry to the vhdx
+Change the **device** path of the new boot entry to the vhdx:
+
 `Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"'`
 
 > _Invoke-Expression 'bcdedit /set "{...}" device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"'_
 
-Change the **osdevice** path of the new boot entry to the vhdx
+Change the **osdevice** path of the new boot entry to the vhdx:
+
 `Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" osdevice vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"'`
 
 > _Invoke-Expression 'bcdedit /set "{...}" osdevice vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"'_
