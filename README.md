@@ -41,7 +41,8 @@ Perform a OS **install** as you would a regular virtual machine
 _(optional)_ Create an answerfile called **unattend.xml** and place it in \Windows\Panther\Unattend\
 
 Launch either **command prompt as admin** or **powershell as admin**
-> \windows\system32\sysprep\sysprep.exe /generalize /oobe /shutdown
+ 
+`\windows\system32\sysprep\sysprep.exe /generalize /oobe /shutdown`
 
 The VM will **shutdown automatically** if there is no error during sysprep
 
@@ -52,6 +53,8 @@ Delete all **checkpoints** for the virtual machine
 After checkpoints merge, copy the **virtual hard disk path** in **Action** > **Settings** > **SCSI Controller** > **Hard Drive**
 
 _[ensure its .vhdx and not a checkpoint .avhdx]_
+
+
 
 _(optional)_ backup the vhdx if you have the time and storage space available
 
@@ -66,11 +69,13 @@ Copy the current boot entry:
 
 Copy the UUID including the brackets {...} from the **output** of the previous command
 
+
 Change the **device** path of the new boot entry to the vhdx:
 
 `bcedit /set {UUID from clipboard} device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"`
 
 > _bcdedit /set {...} device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"_
+
 
 Change the **osdevice** path of the new boot entry to the vhdx:
 
@@ -81,15 +86,17 @@ Change the **osdevice** path of the new boot entry to the vhdx:
 ### PS:
 Copy the **current** boot entry:
 
-`invoke-expression 'bcdedit.exe /copy "{current}" /d "My Dualboot Description"'`
+`Invoke-expression 'bcdedit.exe /copy "{current}" /d "My Dualboot Description"'`
 
 Copy the UUID including the brackets {...} from the **output** of the previous command
+
 
 Change the **device** path of the new boot entry to the vhdx:
 
 `Invoke-Expression 'bcdedit.exe /set "{UUID from clipboard}" device vhd="[DriveLetter:]\PathToVHDXFromStep3.vhdx"'`
 
 > _Invoke-Expression 'bcdedit /set "{...}" device vhd="[C:]\Users\Public\Documents\Hyper-V\Virtual hard disks\Win 10.vhdx"'_
+
 
 Change the **osdevice** path of the new boot entry to the vhdx:
 
